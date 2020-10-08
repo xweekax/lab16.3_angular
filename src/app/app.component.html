@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+<h4>"It's not much, but its honest work" - Legacy Meme</h4>
+
+<input type="text" #userinput (keyup.enter)="addTask(userinput.value); userinput.value=''" (blur)="addTask(userinput.value); userinput.value=''">
+<br/>
+<div *ngFor="let item of thingstodo">
+  <button *ngIf="item.completed==false" (click)="completeTask(item)">Complete</button> {{item.task}}
+</div>
+<br/>
+<button (click)="addTask(userinput.value); userinput.value=''">Add ToDo</button>
+
