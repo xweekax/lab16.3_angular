@@ -5,6 +5,7 @@
 <br/>
 <div *ngFor="let item of thingstodo">
   <button *ngIf="item.completed==false" (click)="completeTask(item)">Complete</button> {{item.task}}
+  <button (click)="removeTask()">X</button>
 </div>
 <br/>
 <button (click)="addTask(userinput.value); userinput.value=''">Add ToDo</button>

@@ -20,13 +20,16 @@ export class AppComponent {
   ];
 
   addTask(newtask: string){
-    this.thingstodo.push({task: newtask, completed: false})
+    this.thingstodo.push({task: newtask, completed: false});
   }
 
   completeTask(iscompleted: ToDo){
-    //let index = this.thingstodo.indexOf(iscompleted);
     iscompleted.completed = true;
-    //this.thingstodo[index] = iscompleted;
+  }
+
+  removeTask(remove: ToDo){
+    this.thingstodo = this.thingstodo.filter(item=>item!==remove);
+    console.log("youve clicked the x");
   }
 }
 
