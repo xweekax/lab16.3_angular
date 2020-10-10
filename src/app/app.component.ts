@@ -9,6 +9,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class AppComponent {
   title = 'Back To Chorin';
 
+  searchtext: string = '';
+
   thingstodo: ToDo[]=[
     {task: "Feed Chickens", completed: false, editing: false},
     {task: "Water Chickens", completed: true, editing: false},
@@ -23,10 +25,6 @@ export class AppComponent {
   addTask(newtask: string){
     this.thingstodo.push({task: newtask, completed: false, editing: false});
   }
-/*
-  updateitem(itemedit: string){ //this is meant to edit but will push a new "toDo" if called
-    this.thingstodo.push({task: itemedit, completed: false});
-  } */
 
   completeTask(iscompleted: ToDo){
     iscompleted.completed = true;
@@ -34,10 +32,6 @@ export class AppComponent {
 
   removeTask(remove: ToDo){
     this.thingstodo.splice(this.thingstodo.indexOf(remove),1);
-    /*
-    this.thingstodo = this.thingstodo.filter(item=>{return item!==remove});
-    console.log("youve clicked the x");
-    console.log(this.thingstodo);*/
   }
 
   get everythingCompleted(){
@@ -47,6 +41,16 @@ export class AppComponent {
       }
     }
     return true;
+  }
+
+  get filteredTodoList(){
+    if(this.searchtext.length<=0){
+      return this.thingstodo;
+    }
+    const filteredList = this.thingstodo.filter(x =>{
+      return x.task.toLowerCase().includes(this.searchtext.toLowerCase());
+    })
+    return filteredList;
   }
 
 }
