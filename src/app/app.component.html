@@ -7,10 +7,19 @@
 <div *ngFor="let item of thingstodo">
   <table style="width: 75%">
     <tr>
-  <td style="width:100px"><button *ngIf="item.completed==false" (click)="completeTask(item)">Complete</button></td><td style="text-align: left; width: 200px;">
-    <span [ngClass]="{'completed' : item.completed==true}">{{item.task}}</span>
-  <a (click)="updateitem(userinput.value)"> - Edit</a></td>
-  <td style="text-align: right"><button (click)="removeTask(item)">X</button></td>
+  <td style="width:100px">
+    <button *ngIf="item.completed==false" (click)="completeTask(item)">Complete</button>
+  </td>
+  <td style="text-align: left; width: 200px;">
+    <span [ngClass]="{'completed' : item.completed==true}" ngIf="item.editing==false">{{item.task}}</span>
+    <input [value]="item.task" *ngIf="item.editing==true" (keyup.enter)="item.task=$event.target.value; item.editing=false">
+  </td>
+    <td>
+      <button *ngIf="item.editing==false" (click)="item.editing==true">Edit</button>
+    </td>
+    <td style="text-align: right">
+      <button (click)="removeTask(item)">X</button>
+    </td>
     </tr>
 </table>
 </div>

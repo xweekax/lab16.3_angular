@@ -10,23 +10,23 @@ export class AppComponent {
   title = 'Back To Chorin';
 
   thingstodo: ToDo[]=[
-    {task: "Feed Chickens", completed: false},
-    {task: "Water Chickens", completed: true},
-    {task: "Weed Garden", completed: false},
-    {task: "Water Garden", completed: true},
-    {task: "Inspect Beehives", completed: false},
-    {task: "Harvest Honey", completed: false},
-    {task: "Mow Lawn", completed: true},
-    {task: "Weed Whip", completed: false},
+    {task: "Feed Chickens", completed: false, editing: false},
+    {task: "Water Chickens", completed: true, editing: false},
+    {task: "Weed Garden", completed: false, editing: false},
+    {task: "Water Garden", completed: true, editing: false},
+    {task: "Inspect Beehives", completed: false, editing: false},
+    {task: "Harvest Honey", completed: false, editing: false},
+    {task: "Mow Lawn", completed: true, editing: false},
+    {task: "Weed Whip", completed: false, editing: false},
   ];
 
   addTask(newtask: string){
-    this.thingstodo.push({task: newtask, completed: false});
+    this.thingstodo.push({task: newtask, completed: false, editing: false});
   }
-
+/*
   updateitem(itemedit: string){ //this is meant to edit but will push a new "toDo" if called
     this.thingstodo.push({task: itemedit, completed: false});
-  }
+  } */
 
   completeTask(iscompleted: ToDo){
     iscompleted.completed = true;
@@ -54,6 +54,7 @@ export class AppComponent {
 interface ToDo{
   task: string;
   completed: boolean;
+  editing: boolean;
 }
 
 
