@@ -1,0 +1,14 @@
+.completed{
+    text-decoration: line-through;
+}
+
+body {
+    background: linear-gradient(270deg, orange 50%, cyan);
+  }
+
+  table, th, td {
+    border: 0px solid black;
+  }
+
+
+

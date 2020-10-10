@@ -1,12 +1,17 @@
+
 <h1>{{title}}</h1>
 <h4>"It's not much, but its honest work" - Legacy Meme</h4>
 
-<input type="text" #userinput (keyup.enter)="addTask(userinput.value); userinput.value=''" (blur)="addTask(userinput.value); userinput.value=''">
-<br/>
+<input type="text" #userinput (keyup.enter)="addTask(userinput.value); userinput.value=''" placeholder="Enter Task">
+<br/><br/>
 <div *ngFor="let item of thingstodo">
-  <button *ngIf="item.completed==false" (click)="completeTask(item)">Complete</button> {{item.task}}
-  <button (click)="removeTask()">X</button>
+  <table style="width: 75%">
+    <tr>
+  <td style="width:100px"><button *ngIf="item.completed==false" (click)="completeTask(item)">Complete</button></td><td style="text-align: left; width: 200px;">
+    <span [ngClass]="{'completed' : item.completed==true}">{{item.task}}</span></td>
+  <td style="text-align: right"><button (click)="removeTask(item)">X</button></td>
+    </tr>
+</table>
 </div>
 <br/>
 <button (click)="addTask(userinput.value); userinput.value=''">Add ToDo</button>
-
