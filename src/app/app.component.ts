@@ -40,6 +40,15 @@ export class AppComponent {
     console.log(this.thingstodo);*/
   }
 
+  get everythingCompleted(){
+    for(let i=0; i < this.thingstodo.length; i++){
+      if(!this.thingstodo[i].completed){
+        return false;
+      }
+    }
+    return true;
+  }
+
 }
 
 interface ToDo{

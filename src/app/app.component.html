@@ -8,10 +8,12 @@
   <table style="width: 75%">
     <tr>
   <td style="width:100px"><button *ngIf="item.completed==false" (click)="completeTask(item)">Complete</button></td><td style="text-align: left; width: 200px;">
-    <span [ngClass]="{'completed' : item.completed==true}">{{item.task}}</span></td>
+    <span [ngClass]="{'completed' : item.completed==true}">{{item.task}}</span>
+  <a (click)="updateitem(userinput.value)"> - Edit</a></td>
   <td style="text-align: right"><button (click)="removeTask(item)">X</button></td>
     </tr>
 </table>
 </div>
+<div *ngIf="everythingCompleted==true">You did it!</div>
 <br/>
 <button (click)="addTask(userinput.value); userinput.value=''">Add ToDo</button>
