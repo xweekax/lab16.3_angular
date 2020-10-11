@@ -3,26 +3,26 @@
 <h4>"It's not much, but its honest work" - Legacy Meme</h4>
 
 <input type="text" #userinput (keyup)="searchtext=userinput.value"(keyup.enter)="addTask(userinput.value); userinput.value=''" placeholder="Enter Task">
-<br/><br/>
+<br/><br/><br/>
 <div *ngFor="let item of filteredTodoList">
   <table style="width: 75%">
     <tr>
-  <td style="width:100px">
-    <button *ngIf="item.completed==false" (click)="completeTask(item)">Complete</button>
+  <td style="width:150px">
+    <button class="myButton" *ngIf="item.completed==false" (click)="completeTask(item)">Complete</button>
   </td>
   <td style="text-align: left; width: 200px;">
     <span [ngClass]="{'completed' : item.completed==true}" *ngIf="item.editing==false">{{item.task}}</span>
     <input [value]="item.task" *ngIf="item.editing==true" (keyup.enter)="item.task=$event.target.value; item.editing=false">
   </td>
     <td>
-      <button *ngIf="item.editing==false" (click)="item.editing=true">Edit</button>
+      <button class="myButton" *ngIf="item.editing==false" (click)="item.editing=true">Edit</button>
     </td>
     <td style="text-align: right">
-      <button (click)="removeTask(item)">X</button>
+      <button class="myButton" (click)="removeTask(item)">X</button>
     </td>
     </tr>
 </table>
 </div>
-<div *ngIf="everythingCompleted==true">You did it!</div>
-<br/>
-<button (click)="addTask(userinput.value); userinput.value=''">Add ToDo</button>
+<div *ngIf="everythingCompleted==true"><h1>You did it!</h1></div>
+<br/><br/><br/>
+<button class="myButton" (click)="addTask(userinput.value); userinput.value=''">Add ToDo</button>
